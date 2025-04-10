@@ -1,13 +1,17 @@
 import { useState, useRef, useEffect } from 'react';
 import { MoreVertical, Trash2, Edit } from 'lucide-react';
 
+interface ContentActionsDropdownProps {
+    onDelete: () => void;
+    onRename: (...args: any[]) => void; // Accepte n'importe quels arguments
+    className?: string;
+  }
+
 export const ContentActionsDropdown = ({ 
   onDelete, 
-  onRename 
-}: {
-  onDelete: () => void;
-  onRename: () => void;
-}) => {
+  onRename,
+  className = ""
+}: ContentActionsDropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
